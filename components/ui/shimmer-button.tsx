@@ -1,29 +1,61 @@
+
 "use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+interface ShimmerButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  shimmerColor?: string
+  shimmerSize?: string
+  borderRadius?: string
+  shimmerDuration?: string
+  background?: string
+  className?: string
+}
 
-const ShimmerButton = React.forwardRef<HTMLButtonElement, ButtonProps>(({ className, ...props }, ref) => {
-  return (
-    <button
-      className={cn(
-        "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
-        "bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-600 hover:to-cyan-600",
-        "relative overflow-hidden",
-        className,
-      )}
-      ref={ref}
-      {...props}
-    >
-      <span className="relative z-10">{props.children}</span>
-      <span className="absolute inset-0 overflow-hidden rounded-md">
-        <span className="absolute inset-0 rounded-md bg-[length:200%_100%] bg-gradient-to-r from-transparent via-white/25 to-transparent animate-shimmer" />
-      </span>
-    </button>
-  )
-})
+const ShimmerButton = React.forwardRef<HTMLButtonElement, ShimmerButtonProps>(
+  (
+    {
+      shimmerColor = "rgb(251, 0, 217",
+      shimmerSize = "0.1em",
+      borderRadius = "1000px",
+      shimmerDuration = "1.5s",
+      background = "radial-gradient(ellipse 80% 50% at 50% 120%,rgba(62, 61, 117),rgba(18, 18, 38))",
+      className,
+      children,
+      ...props
+    },
+    ref,
+  ) => {
+    return (
+      <button
+        ref={ref}
+        className={cn(
+          "group relative cursor-pointer overflow-hidden whitespace-nowrap px-6 py-4 [background:var(--btn-bg)] [border:none]",
+          className,
+        )}
+        style={
+          {
+            "--btn-bg": background,
+            "--shimmer-color": shimmerColor,
+            "--radius": borderRadius,
+            "--shimmer-size": shimmerSize,
+            "--speed": shimmerDuration,
+          } as React.CSSProperties
+        }
+        {...props}
+      >
+        {children}
+        <div className="absolute inset-0 overflow-hidden rounded-[inherit]">
+          <div className="absolute inset-0 rounded-[inherit] [container-type:size]">
+            <div className="absolute inset-0 h-[100cqh] animate-shimmer rounded-[inherit] [background:linear-gradient(90deg,transparent_0%,var(--shimmer-color)_30%,transparent_60%)] [width:var(--shimmer-size)]"></div>
+          </div>
+        </div>
+      </button>
+    )
+  },
+)
 ShimmerButton.displayName = "ShimmerButton"
 
 export { ShimmerButton }
+

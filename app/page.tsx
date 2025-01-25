@@ -2,15 +2,14 @@ import { Button } from "@/components/ui/button"
 import { MainNav } from "@/components/nav-menu"
 import { InteractiveGrid } from "@/components/ui/interactive-grid"
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
-
+import { Particles } from "@/components/ui/particles"
 export default function Home() {
   return (
     <div className="relative min-h-screen">
       <InteractiveGrid />
+      <Particles className="absolute inset-0 -z-10 animate-fade-in" quantity={100} />
       <header className="sticky top-0 border-b bg-white/50 backdrop-blur-sm">
-        <div className="h-16">
-          <MainNav />
-        </div>
+        
       </header>
       <main className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center">

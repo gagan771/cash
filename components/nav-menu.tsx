@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { Button } from "@/components/ui/button"
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text"
+import { ThemeSwitcher } from "@/components/theme-switcher"
 
 export function MainNav() {
   return (
@@ -73,6 +74,8 @@ export function MainNav() {
       </NavigationMenu>
 
       <div className="flex items-center gap-4">
+         
+      
         <Button variant="ghost">Login</Button>
         <Button>Try for free</Button>
       </div>
