@@ -15,11 +15,10 @@ export default function Home() {
       <main className="container mx-auto px-4">
         <div className="flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center">
           <h1 className="text-6xl font-bold mb-6">
-            Welcome to <AnimatedGradientText>Magic UI</AnimatedGradientText>
+            Welcome to <AnimatedGradientText>Cash.AI</AnimatedGradientText>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mb-8">
-            A beautiful combination of interactive patterns, animations, and components for building modern web
-            applications.
+          An All-in-One Platform to Meet All Your Financial Needs in One Place.
           </p>
           <div className="flex gap-4">
             <Button size="lg" variant="outline">

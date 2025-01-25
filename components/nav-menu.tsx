@@ -44,7 +44,7 @@ export function MainNav() {
             <NavigationMenuTrigger>Components</NavigationMenuTrigger>
             <NavigationMenuContent>
               <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                <ListItem href="/tools" title="Tools">
+                <ListItem href="/docs/components/button" title="Button">
                   Trigger actions and events.
                 </ListItem>
                 <ListItem href="/docs/components/dialog" title="Dialog">
@@ -58,6 +58,11 @@ export function MainNav() {
                 </ListItem>
               </ul>
             </NavigationMenuContent>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <Link href="/tools" legacyBehavior passHref>
+              <NavigationMenuLink className={navigationMenuTriggerStyle()}>Tools</NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/docs" legacyBehavior passHref>
@@ -97,4 +102,3 @@ const ListItem = React.forwardRef<React.ElementRef<"a">, React.ComponentPropsWit
   },
 )
 ListItem.displayName = "ListItem"
-
